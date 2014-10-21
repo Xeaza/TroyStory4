@@ -35,8 +35,12 @@
 - (void)loadData
 {
     NSError *error;
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Trojan"];
-    self.trojans = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Trojan"];
+    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"prowess" ascending:NO];
+    request.sortDescriptors = [NSArray arrayWithObjects:sortDescriptor1, sortDescriptor2, nil];
+
+    self.trojans = [self.managedObjectContext executeFetchRequest:request error:nil];
 
     if (!error)
     {
