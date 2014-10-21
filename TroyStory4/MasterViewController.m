@@ -15,6 +15,19 @@
 
 - (IBAction)onTrojanConquest:(UITextField *)sender
 {
+    NSError *error;
+    NSManagedObject *trojan = [NSEntityDescription insertNewObjectForEntityForName:@"Trojan" inManagedObjectContext:self.managedObjectContext];
+    [trojan setValue:sender.text forKey:@"name"];
+    [self.managedObjectContext save:&error];
+    if (!error)
+    {
+        [self loadData];
+    }
+    else
+    {
+        NSLog(@"Error: %@",error.localizedDescription);
+    }
+    sender.text = @"";
     [sender resignFirstResponder];
 }
 
