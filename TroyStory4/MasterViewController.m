@@ -18,6 +18,7 @@
     NSError *error;
     NSManagedObject *trojan = [NSEntityDescription insertNewObjectForEntityForName:@"Trojan" inManagedObjectContext:self.managedObjectContext];
     [trojan setValue:sender.text forKey:@"name"];
+    [trojan setValue:@(arc4random_uniform(10)+1) forKey:@"prowess"];
     [self.managedObjectContext save:&error];
     if (!error)
     {
@@ -53,6 +54,9 @@
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     cell.textLabel.text = [trojan valueForKey:@"name"];
+    cell.detailTextLabel.text = [[trojan valueForKey:@"prowess"] description];
+    // Line 57 is also the same as this line
+    //cell.detailTextLabel.text = [[trojan valueForKey:@"prowess"] stringValue];
     return cell;
 }
 

@@ -8,9 +8,10 @@
     </entity>
     <entity name="Trojan" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="prowess" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
         <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
-        <element name="Trojan" positionX="261" positionY="198" width="128" height="58"/>
+        <element name="Trojan" positionX="261" positionY="198" width="128" height="73"/>
     </elements>
 </model>
