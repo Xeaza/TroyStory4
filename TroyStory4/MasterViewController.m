@@ -6,6 +6,9 @@
 
 @implementation MasterViewController
 
-
+- (IBAction)onTrojanConquest:(UITextField *)sender
+{
+    [sender resignFirstResponder];
+}
 
 @end
